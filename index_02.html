@@ -8,7 +8,7 @@
       <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
       <style>
         body{
-          margin: 2rem;
+          margin: 3rem;
         }
         #app svg {
           padding: 5px 
@@ -31,30 +31,17 @@
     </head>
     <body>
       <div id="app">
-        <h1 class="h1" >Word Game</h1>
+        <h1 class="h1" >Your Wordle Game</h1>
         <div>
-          <button class="btn btn-dark" @click="resetGame">New game</button>
+          <button class="btn btn-dark">Restart Game</button>
         </div>
         <div>
-          <input type="text" v-model="currentGuess" @input="clearBadGuess" :disabled="didWin"/>
-          <button class="btn btn-outline-dark" @click="addGuess" :disabled="didWin">Add guess</button>
+          <input type="text"/>
+          <button class="btn btn-outline-dark" > GUESS</button>
         </div>
         <div>
-          <span v-if="badGuess.show" class="bad-guess">bad guess: {{ badGuess.reason }}!</span>
+          <span> wrong guess </span>
         </div>
-        <svg :height="svgHeight" :width="svgWidth">
-          <g v-for="(row, rowIndex) in gridData">
-            <g
-              v-for="(cell, cellIndex) in row"
-              :transform="`translate(${xScale(cellIndex)}, ${yScale(rowIndex)})`"
-            >
-              <rect :height="tileDimension" :width="tileDimension" :fill="cell.color"></rect>
-              <text :x="tileDimension / 2" :y="tileDimension / 2">
-                {{ cell.letter }}
-              </text>
-            </g>
-          </g>
-        </svg>
       </div>
       <script type="module" src="./main.js"></script>
     </body>
